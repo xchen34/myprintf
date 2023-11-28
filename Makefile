@@ -10,4 +10,28 @@
 #                                                                              #
 # **************************************************************************** #
 
-$NAME 
+NAME = libftprintf.a
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
+SRC = 
+
+OBJ = $(SRC.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	ar rcs
+
+$(OBJ): $(SRC)
+	$(CC) $(CFLAGS) -c $(SRC) -o $(OBJ)
+
+clean:
+	$(RM) $(OBJ)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean 
+
+.PHONY: clean fclean re 
