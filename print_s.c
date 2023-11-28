@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leochen <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: leochen <leochen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:26:33 by leochen           #+#    #+#             */
-/*   Updated: 2023/11/27 19:17:50 by leochen          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:21:27 by leochen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_s(va_list params)
+int	print_s(char *s)
 {
-	if (va_arg(params, char *) == NULL)
+	if (s == NULL)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
-	ft_putstr_fd(va_arg(params, char *), 1);
-	return (ft_strlen(va_arg(params)));
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
+	ft_putstr_fd(s, 1);
+	return (ft_strlen(s));
 }

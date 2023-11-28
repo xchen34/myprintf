@@ -6,7 +6,7 @@
 /*   By: leochen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:42:14 by leochen           #+#    #+#             */
-/*   Updated: 2023/11/27 15:43:19 by leochen          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:26:13 by leochen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
 # include "../libft/libft.h"
 
-int	ft_printf(const char *format, ...); 
-
+int	ft_printf(const char*); 
+int	print_c(char c);
+int	print_d(int	nb);
+int	print_p(void *address);
+int	print_s(char *s);
+int	print_u(unsigned int nb);
+int	print_x(unsigned int n, int uppercase);
 
 #endif 

@@ -6,14 +6,14 @@
 /*   By: leochen <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 18:23:27 by leochen           #+#    #+#             */
-/*   Updated: 2023/11/27 18:26:26 by leochen          ###   ########.fr       */
+/*   Updated: 2023/11/28 12:41:46 by leochen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_c(va_list params)
+int	print_c(char c)
 {
-	ft_putchar_fd(va_arg(params, int), 1);
+	ft_putchar_fd(c, 1);
 	return (1);
 }
