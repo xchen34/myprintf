@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leochen <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: leochen <leochen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:48:23 by leochen           #+#    #+#             */
-/*   Updated: 2023/11/28 15:45:05 by leochen          ###   ########.fr       */
+/*   Updated: 2023/11/30 18:56:04 by leochen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	count_hex_digit(unsigned long long n)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n == 0)
@@ -33,7 +33,7 @@ static void	put_ptr(unsigned long long address)
 
 	if (address >= 16)
 	{
-		put_ptr(adress / 16);
+		put_ptr(address / 16);
 		ft_putchar_fd(base[address % 16], 1);
 	}
 	else
@@ -48,7 +48,6 @@ int	print_p(void *address)
 		return (5);
 	}
 	ft_putstr_fd("0x", 1);
-	put_ptr((unsigned long long)adress);
-	return (count_hex_digit((unsigned long long)adress) + 2);
+	put_ptr((unsigned long long)address);
+	return (count_hex_digit((unsigned long long)address) + 2);
 }
-

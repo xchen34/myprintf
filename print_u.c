@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leochen <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: leochen <leochen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:24:58 by leochen           #+#    #+#             */
-/*   Updated: 2023/11/28 15:46:23 by leochen          ###   ########.fr       */
+/*   Updated: 2023/11/30 18:59:42 by leochen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,17 @@ int	print_u(unsigned int nb)
 {
 	int	len;
 
+	len = 1;
 	ft_put_unsigned_int_fd(nb, 1);
-	if (nb == 0)
+	if (nb < 10)
 		return (1);
-	len = ft_strlen(ft_itoa(nb);
+	else
+	{
+		while (nb >= 10)
+		{
+			len++;
+			nb = nb / 10;
+		}
+	}
 	return (len);
 }
