@@ -6,38 +6,49 @@
 /*   By: leochen <leochen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:54:54 by leochen           #+#    #+#             */
-/*   Updated: 2023/11/30 19:00:00 by leochen          ###   ########.fr       */
+/*   Updated: 2023/12/01 16:52:47 by leochen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 //#include <stdio.h>
 
-static int	param_size(char flag, va_list params)
+static int	param_size(char conversion, va_list params)
 {
 	int	printed;
 
 	printed = 0;
-	if (flag == 'c')
+	if (conversion == 'c')
 		printed = print_c(va_arg(params, int));
-	else if (flag == 's')
+	else if (conversion == 's')
 		printed = print_s(va_arg(params, char *));
-	else if (flag == 'p')
+	else if (conversion == 'p')
 		printed = print_p(va_arg(params, void *));
-	else if (flag == 'i' || flag == 'd')
+	else if (conversion == 'i' || conversion == 'd')
 		printed = print_d(va_arg(params, int));
-	else if (flag == 'u')
+	else if (conversion == 'u')
 		printed = print_u(va_arg(params, unsigned int));
-	else if (flag == 'x')
+	else if (conversion == 'x')
 		printed = print_x(va_arg(params, unsigned int), 0);
-	else if (flag == 'X')
+	else if (conversion == 'X')
 		printed = print_x(va_arg(params, unsigned int), 1);
-	else if (flag == '%')
+	else if (conversion == '%')
 	{
 		ft_putchar_fd('%', 1);
 		printed = 1;
 	}
 	return (printed);
+}
+
+int	checkerror(char c)
+{
+	if (c != 'c' && c != 's' && c != 'p'
+		&& c != 'i' && c != 'd' && c != 'u'
+		&& c != 'x' && c != 'X' && c != 'c'
+		&& c != '%')
+		return (-1);
+	else
+		return (0);
 }
 
 int	ft_printf(const char *format, ...)
@@ -59,6 +70,8 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
+			if (checkerror(*(format + 1)) == -1)
+				return (-1);
 			printed = printed + param_size(*(format + 1), params);
 			format = format + 2;
 		}
