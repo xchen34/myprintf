@@ -6,7 +6,7 @@
 #    By: leochen <leochen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 18:36:38 by leochen           #+#    #+#              #
-#    Updated: 2023/11/30 14:36:55 by leochen          ###   ########.fr        #
+#    Updated: 2023/12/04 13:22:46 by leochen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,9 +61,11 @@ OBJS_LIBFT = $(SRCS_LIBFT:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
 
-
 	
-all: $(NAME)
+all: libft.a $(NAME)
+
+libft.a : 
+	make -C libft
 
 test:
 	@ $(CC) $(CFLAGS) main.c $(NAME) -o main
@@ -80,6 +82,7 @@ clean:
 	rm -f $(OBJS) $(OBJS_LIBFT)
 
 fclean: clean
+	make -C libft fclean
 	rm -f $(NAME)
 
 re: fclean all
